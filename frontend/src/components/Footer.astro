@@ -1,0 +1,19 @@
+---
+import Social from "./Social.astro";
+import Counter from "../components/Counter.astro";
+---
+
+<style>
+  footer {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+</style>
+<footer>
+  <p>
+    <Social platform="linkedin" username="in/giorgiodellegrottaglie" />
+    <Social platform="github" username="giorgiodg" />
+  </p>
+  <Counter />
+</footer>

@@ -1,0 +1,93 @@
+html {
+  background-color: var(--clr-bg);
+  font-family: sans-serif;
+  --clr-bg: #1f2024;
+  --clr-bg-alt: #24272f;
+  --clr-fg: #b6b2ac;
+  --clr-fg-alt: #f4b857;
+  --clr-primary: #c47b06;
+  --shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+body {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 80ch;
+  padding: 1rem;
+  line-height: 1.5;
+  color: var(--clr-fg);
+}
+
+a {
+  color: var(--clr-fg);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: var(--clr-primary);
+}
+h1 {
+  margin: 1rem 0;
+  font-size: 2.5rem;
+}
+
+footer a {
+  padding: 0.5rem 1rem;
+  background-color: var(--clr-bg-alt);
+  text-decoration: none;
+}
+
+.nav-links {
+  width: 100%;
+  top: 5rem;
+  left: 48px;
+  color: var(--clr-primary);
+  display: none;
+  margin: 0;
+}
+
+.nav-links a {
+  display: block;
+  text-align: center;
+  padding: 10px 0;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: lowercase;
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+  color: var(--clr-primary);
+}
+
+.expanded {
+  display: unset;
+}
+
+@media screen and (min-width: 636px) {
+  .nav-links {
+    margin-left: 5em;
+    display: block;
+    position: static;
+    width: auto;
+    background: none;
+  }
+
+  .nav-links a {
+    display: inline-block;
+    padding: 15px 20px;
+  }
+
+  .hamburger {
+    display: none;
+  }
+}

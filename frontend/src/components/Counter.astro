@@ -1,0 +1,26 @@
+---
+
+---
+
+<span id="views"></span>
+<script>
+  const views = document.querySelector("#views") as HTMLElement | null;
+
+  async function updateCounter() {
+    if (!views) {
+      console.error("Element not found");
+      return;
+    }
+    try {
+      const response = await fetch(
+        "https://b65g5vj6gd7rhgdo6bjjbzz6na0guunp.lambda-url.eu-west-3.on.aws/"
+      );
+      let data = await response.json();
+      views.innerHTML = `Views: ${data.view}`;
+    } catch (error) {
+      console.error("Error updating view counter", error);
+    }
+  }
+
+  updateCounter();
+</script>
