@@ -18,6 +18,12 @@ module "frontend_cdn" {
   tags               = var.project_tags
 }
 
+module "db_table" {
+  source       = "./modules/db"
+  project_name = var.project_name
+  tags         = var.project_tags
+}
+
 ## outputs
 output "cdn_domain_name" {
   description = "Public domain name of the CloudFront distribution"
