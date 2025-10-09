@@ -24,6 +24,16 @@ variable "tags" {
   default     = {}
 }
 
+variable "cert_domain_name" {
+  type        = string
+  description = "Alternate domain name (CNAME) for CloudFront"
+}
+
+variable "acm_certificate_arn" {
+  type        = string
+  description = "ARN of ACM certificate in us-east-1"
+}
+
 # --- CloudFront OAC ---
 resource "aws_cloudfront_origin_access_control" "oac" {
   name                              = var.project_name
@@ -37,6 +47,8 @@ resource "aws_cloudfront_origin_access_control" "oac" {
 resource "aws_cloudfront_distribution" "cdn" {
   enabled             = true
   default_root_object = "index.html"
+
+  aliases = [var.cert_domain_name]
 
   origin {
     domain_name              = var.origin_domain_name
@@ -75,7 +87,9 @@ resource "aws_cloudfront_distribution" "cdn" {
   }
 
   viewer_certificate {
-    cloudfront_default_certificate = true
+    acm_certificate_arn      = var.acm_certificate_arn
+    ssl_support_method       = "sni-only"
+    minimum_protocol_version = "TLSv1.2_2021"
   }
 
   tags = merge({

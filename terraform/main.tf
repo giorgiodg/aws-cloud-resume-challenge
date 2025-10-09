@@ -1,6 +1,6 @@
-provider "aws" {
-  region = var.aws_region
-}
+# provider "aws" {
+#   region = var.aws_region
+# }
 
 module "frontend_website" {
   source              = "./modules/s3"
@@ -9,28 +9,57 @@ module "frontend_website" {
   tags                = var.project_tags
 }
 
-module "frontend_cdn" {
-  source             = "./modules/cloudfront"
-  project_name       = var.project_name
-  origin_bucket_id   = module.frontend_website.bucket_id
-  origin_bucket_arn  = module.frontend_website.bucket_arn
-  origin_domain_name = module.frontend_website.bucket_domain_name
-  tags               = var.project_tags
+# Cert Lookup in ACM us-east-1
+data "aws_acm_certificate" "cf_cert" {
+  domain      = var.cert_domain_name
+  statuses    = ["ISSUED"]
+  most_recent = true
+  provider    = aws.us_east_1
 }
 
-module "db_table" {
+module "frontend_cdn" {
+  source              = "./modules/cloudfront"
+  project_name        = var.project_name
+  origin_bucket_id    = module.frontend_website.bucket_id
+  origin_bucket_arn   = module.frontend_website.bucket_arn
+  origin_domain_name  = module.frontend_website.bucket_domain_name
+  cert_domain_name    = var.cert_domain_name
+  acm_certificate_arn = data.aws_acm_certificate.cf_cert.arn
+  tags                = var.project_tags
+}
+
+module "db" {
   source       = "./modules/db"
   project_name = var.project_name
   tags         = var.project_tags
 }
 
+module "lambda" {
+  source               = "./modules/lambda"
+  project_name         = var.project_name
+  lambda_function_name = var.lambda_function_name
+  lambda_zip_path      = var.lambda_zip_path
+  tags                 = var.project_tags
+  allowed_origin       = var.alternate_domain_name
+}
+
 ## outputs
-output "cdn_domain_name" {
+output "cloudfront_domain_name" {
   description = "Public domain name of the CloudFront distribution"
   value       = module.frontend_cdn.cloudfront_domain_name
 }
 
-output "cdn_distribution_id" {
+output "cloudfront_distribution_id" {
   description = "ID of the CloudFront distribution"
   value       = module.frontend_cdn.cloudfront_distribution_id
+}
+
+output "function_url" {
+  description = "URL of the Lambda function"
+  value       = module.lambda.function_url
+}
+
+output "acm_certificate_arn" {
+  description = "ACM certificate ARN used for CloudFront"
+  value       = data.aws_acm_certificate.cf_cert.arn
 }

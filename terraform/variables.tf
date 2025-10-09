@@ -23,3 +23,29 @@ variable "website_output_path" {
   type        = string
   default     = "../frontend/dist"
 }
+
+variable "lambda_zip_path" {
+  description = "Path to frontend dist folder"
+  type        = string
+  default     = "./modules/lambda"
+}
+
+variable "lambda_function_name" {
+  description = "Name for the view counter lambda function View"
+  type        = string
+  default     = "view_counter"
+}
+
+variable "alternate_domain_name" {
+  type    = string
+  default = "https://www.giorgiodg.cloud"
+}
+
+variable "cert_domain_name" {
+  type    = string
+  default = "*.giorgiodg.cloud"
+}
+
+variable "acm_certificate_arn" {
+  default = "arn:aws:acm:us-east-1:123456789012:certificate/abc123..."
+}
