@@ -1,11 +1,16 @@
 ---
-
+import Container from "@components/Container.astro";
+import Link from "@components/Link.astro";
+import { SITE } from "@consts";
 ---
 
 <header>
-  <nav>
-    <div class="nav-links">
-      <!-- <a href="/">Home</a> -->
+  <Container>
+    <div class="flex flex-wrap gap-y-2 justify-between">
+      <!-- Logo -->
+      <Link href="/">
+        <div class="font-bold text-lg md:text-lg">{SITE.NAME}</div>
+      </Link>
     </div>
-  </nav>
+  </Container>
 </header>

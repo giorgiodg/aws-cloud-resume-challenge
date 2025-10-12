@@ -13,7 +13,6 @@ resource "aws_dynamodb_table" "counter_table" {
   hash_key     = "id"
   billing_mode = "PAY_PER_REQUEST" # on-demand, no capacity units needed
 
-  # Attributes
   attribute {
     name = "id"
     type = "S"
@@ -34,13 +33,3 @@ resource "aws_dynamodb_table_item" "initial_counter" {
     views = { N = "0" }
   })
 }
-
-# output "dynamodb_table_name" {
-#   description = "The name of the DynamoDB table"
-#   value       = aws_dynamodb_table.counter_table.name
-# }
-
-# output "dynamodb_table_arn" {
-#   description = "The ARN of the DynamoDB table"
-#   value       = aws_dynamodb_table.counter_table.arn
-# }

@@ -1,11 +1,63 @@
 ---
-import Layout from "../layouts/Layout.astro";
-const pageTitle = "Cloud Resume Challenge - Giorgio Delle Grottaglie";
+import Container from "@components/Container.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+import Link from "@components/Link.astro";
+import Globe from "@lucide/astro/icons/globe";
+import Book from "@lucide/astro/icons/book";
+import Github from "@lucide/astro/icons/github";
+import Linkedin from "@lucide/astro/icons/linkedin";
+import { blogEntries, personalLinks, HOME } from "@consts";
+import ArrowCard from "@components/ArrowCard.astro";
 ---
 
-<Layout pageTitle={pageTitle}>
-  <main>
-    <h2>{pageTitle}</h2>
-    <p>In progress..</p>
-  </main>
-</Layout>
+<PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
+  <Container>
+    <section class="animate space-y-6 pt-8">
+      <div class="flex flex-wrap gap-y-2 items-center justify-between">
+        <h1 class="mt-4 text-xl font-bold text-amber-700 dark:text-amber-600">
+          The Cloud Resume Challenge
+        </h1>
+      </div>
+      <p>
+        This is the website I have built within the scope of the AWS Cloud
+        Resume Challenge. I documented my learnings in the blogposts below.
+      </p>
+    </section>
+    <section class="animate space-y-16 pt-8">
+      <ul class="flex flex-col gap-4">
+        {
+          blogEntries.map((blogEntry) => (
+            <li>
+              <ArrowCard entry={blogEntry} />
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+    <section>
+      <div class="space-y-6 pt-8">
+        <div class="flex space-x-6 mt-8">
+          <h5 class="font-medium text-black dark:text-white">
+            Giorgio Delle Grottaglie
+          </h5>
+          {
+            personalLinks.map((personalLink) => (
+              <button>
+                <Link
+                  href={personalLink.href}
+                  external
+                  aria-label={personalLink.name}
+                >
+                  <personalLink.icon />
+                </Link>
+              </button>
+            ))
+          }
+        </div>
+        <div class="view font-medium text-black dark:text-white">
+          Views: N/A
+        </div>
+      </div>
+    </section>
+  </Container>
+</PageLayout>

@@ -1,0 +1,33 @@
+---
+import Container from "@components/Container.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+import { CREDITS } from "@consts";
+import Link from "@components/Link.astro";
+---
+
+<PageLayout title={CREDITS.TITLE} description={CREDITS.DESCRIPTION}>
+  <Container>
+    <h2 class="font-extrabold pt-20">{CREDITS.TITLE}</h2>
+    <div class="space-y-16 pt-8">
+      <section>
+        <div class="space-y-4">
+          <p>
+            This site is powered by <Link
+              href="https://astro.build/"
+              aria-label="Astro"
+              external>Astro.js</Link
+            ><br />The theme is heavily inspired by <Link
+              href="https://github.com/markhorn-dev/astro-nano"
+              external>Astro Nano</Link
+            > built by Mark Horn<br />
+            The source code is publicly available on my <Link
+              href="https://github.com/giorgiodg/"
+              aria-label="Astro"
+              external>GitHub profile</Link
+            >
+          </p>
+        </div>
+      </section>
+    </div>
+  </Container>
+</PageLayout>

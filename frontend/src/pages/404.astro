@@ -1,0 +1,28 @@
+---
+import Container from "@components/Container.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+import Link from "@components/Link.astro";
+import { PAGE404 } from "@consts";
+---
+
+<PageLayout title={PAGE404.TITLE} description="" robots="noindex">
+  <Container>
+    <section class="flex items-center justify-center h-screen text-center">
+      <div>
+        <div class="pb-4">
+          <h1 class="text-3xl md:text-5xl font-extrabold">
+            404 - Page Not Found
+          </h1>
+        </div>
+        <div class="text-lg space-y-8">
+          <p class="font-semibold">
+            Oops! The page you're looking for doesn't exist.
+          </p>
+          <Link href="/" aria-label="Go back to the homepage">
+            Go Back Home
+          </Link>
+        </div>
+      </div>
+    </section>
+  </Container>
+</PageLayout>
