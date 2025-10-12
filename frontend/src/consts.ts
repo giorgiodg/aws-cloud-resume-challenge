@@ -1,15 +1,5 @@
 import type { Site, Metadata, BlogEntry, PersonalLink } from "@types";
-// import Globe from "@lucide/astro/icons/globe";
-// import Book from "@lucide/astro/icons/book";
-// import Github from "@lucide/astro/icons/github";
-// import Linkedin from "@lucide/astro/icons/linkedin";
-import {
-  Globe,
-  Book,
-  Github,
-  Linkedin,
-  type Icon as IconType,
-} from "@lucide/astro";
+import { Globe, Book, Github, Linkedin } from "@lucide/astro";
 
 export const SITE: Site = {
   NAME: "giorgiodg.cloud",

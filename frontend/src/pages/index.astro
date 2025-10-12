@@ -2,10 +2,7 @@
 import Container from "@components/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
 import Link from "@components/Link.astro";
-import Globe from "@lucide/astro/icons/globe";
-import Book from "@lucide/astro/icons/book";
-import Github from "@lucide/astro/icons/github";
-import Linkedin from "@lucide/astro/icons/linkedin";
+import Counter from "@components/Counter.astro";
 import { blogEntries, personalLinks, HOME } from "@consts";
 import ArrowCard from "@components/ArrowCard.astro";
 ---
@@ -54,9 +51,7 @@ import ArrowCard from "@components/ArrowCard.astro";
             ))
           }
         </div>
-        <div class="view font-medium text-black dark:text-white">
-          Views: N/A
-        </div>
+        <Counter />
       </div>
     </section>
   </Container>
