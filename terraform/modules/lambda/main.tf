@@ -7,11 +7,6 @@ variable "lambda_function_name" {
   type        = string
 }
 
-variable "lambda_zip_path" {
-  description = "Path to the zipped Lambda code"
-  type        = string
-}
-
 variable "tags" {
   description = "Tags to apply to CloudFront resources"
   type        = map(string)
@@ -58,17 +53,18 @@ resource "aws_lambda_function" "view_counter" {
   runtime       = "nodejs22.x"
   handler       = "${var.lambda_function_name}.handler"
   role          = aws_iam_role.lambda_exec_role.arn
-  filename      = "${var.lambda_zip_path}/${var.lambda_function_name}.mjs.zip"
+  filename      = data.archive_file.lambda_zip.output_path
 
   tags = merge({
     Name = var.lambda_function_name
   }, var.tags)
 
-  #   environment {
-  #     variables = {
-  #       TABLE_NAME = aws_dynamodb_table.db.name
-  #     }
-  #   }
+}
+
+data "archive_file" "lambda_zip" {
+  type        = "zip"
+  source_file = "${path.module}/${var.lambda_function_name}.mjs"
+  output_path = "${path.module}/${var.lambda_function_name}.mjs.zip"
 }
 
 resource "aws_lambda_function_url" "view_counter_url" {

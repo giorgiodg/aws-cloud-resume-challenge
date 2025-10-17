@@ -38,7 +38,6 @@ module "lambda" {
   source               = "./modules/lambda"
   project_name         = var.project_name
   lambda_function_name = var.lambda_function_name
-  lambda_zip_path      = var.lambda_zip_path
   tags                 = var.project_tags
   allowed_origin       = var.alternate_domain_name
 }

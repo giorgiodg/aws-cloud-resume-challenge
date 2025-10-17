@@ -19,7 +19,7 @@ export const handler = async (event) => {
     if (!getResponse.Item) {
       return {
         statusCode: 404,
-        body: JSON.stringify({ message: "Item not found" }),
+        body: JSON.stringify({ message: "Item was not found" }),
       };
     }
 

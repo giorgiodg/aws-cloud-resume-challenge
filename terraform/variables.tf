@@ -24,12 +24,6 @@ variable "website_output_path" {
   default     = "../frontend/dist"
 }
 
-variable "lambda_zip_path" {
-  description = "Path to frontend dist folder"
-  type        = string
-  default     = "./modules/lambda"
-}
-
 variable "lambda_function_name" {
   description = "Name for the view counter lambda function View"
   type        = string
