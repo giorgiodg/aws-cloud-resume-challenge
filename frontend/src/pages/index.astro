@@ -1,10 +1,10 @@
 ---
 import Container from "@components/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
-import Link from "@components/Link.astro";
 import Counter from "@components/Counter.astro";
-import { blogEntries, personalLinks, HOME } from "@consts";
+import { BLOG_ENTRIES, HOME } from "@consts";
 import ArrowCard from "@components/ArrowCard.astro";
+import PersonalLinks from "@components/PersonalLinks.astro";
 ---
 
 <PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
@@ -23,7 +23,7 @@ import ArrowCard from "@components/ArrowCard.astro";
     <section class="animate space-y-16 pt-8">
       <ul class="flex flex-col gap-4">
         {
-          blogEntries.map((blogEntry) => (
+          BLOG_ENTRIES.map((blogEntry) => (
             <li>
               <ArrowCard entry={blogEntry} />
             </li>
@@ -37,19 +37,7 @@ import ArrowCard from "@components/ArrowCard.astro";
           <h5 class="font-medium text-black dark:text-white">
             Giorgio Delle Grottaglie
           </h5>
-          {
-            personalLinks.map((personalLink) => (
-              <button>
-                <Link
-                  href={personalLink.href}
-                  external
-                  aria-label={personalLink.name}
-                >
-                  <personalLink.icon />
-                </Link>
-              </button>
-            ))
-          }
+          <PersonalLinks />
         </div>
         <Counter />
       </div>

@@ -17,12 +17,12 @@ export const CREDITS: Metadata = {
   DESCRIPTION: "",
 };
 
-export const PAGE404: Metadata = {
+export const PAGE_404: Metadata = {
   TITLE: "404 Not Found",
   DESCRIPTION: "",
 };
 
-export const blogEntries: BlogEntry[] = [
+export const BLOG_ENTRIES: BlogEntry[] = [
   {
     href: "https://giorgiodg.it/blog/cloud-resume-challenge-aws-foundation",
     title:
@@ -37,7 +37,7 @@ export const blogEntries: BlogEntry[] = [
   },
 ];
 
-export const personalLinks: PersonalLink[] = [
+export const PERSONAL_LINKS: PersonalLink[] = [
   {
     name: "Website",
     href: "https://giorgiodg.it/",

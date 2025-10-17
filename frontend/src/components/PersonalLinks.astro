@@ -1,0 +1,14 @@
+---
+import { PERSONAL_LINKS } from "@consts";
+import Link from "@components/Link.astro";
+---
+
+{
+  PERSONAL_LINKS.map((personalLink) => (
+    <button>
+      <Link href={personalLink.href} external aria-label={personalLink.name}>
+        <personalLink.icon />
+      </Link>
+    </button>
+  ))
+}
