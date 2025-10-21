@@ -1,8 +1,8 @@
-name: Deploy Frontend to S3
+name: Frontend - Deploy
 
 on:
   workflow_run:
-    workflows: ["Cypress E2E Tests"]
+    workflows: ["Frontend - E2E Tests"]
     types:
       - completed
 

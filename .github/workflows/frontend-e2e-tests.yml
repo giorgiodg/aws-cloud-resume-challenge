@@ -1,4 +1,4 @@
-name: Cypress E2E Tests
+name: Frontend - E2E Tests
 
 on:
   push:

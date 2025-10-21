@@ -1,4 +1,4 @@
-name: Deploy and Test Lambda
+name: Backend - Deploy
 
 on:
   push:
@@ -31,7 +31,7 @@ jobs:
 
       - name: Terraform Apply
         id: apply
-        run: terraform apply -target=module.lambda -auto-approve
+        run: terraform apply -auto-approve
         working-directory: terraform
 
       - name: Export Lambda URL
