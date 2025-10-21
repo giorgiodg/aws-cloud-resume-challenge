@@ -1,12 +1,12 @@
 name: Deploy and Test Lambda
 
 on:
-  workflow_dispatch:
   push:
     branches:
       - main
     paths:
       - "backend/**"
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -36,8 +36,7 @@ jobs:
 
       - name: Export Lambda URL
         id: lambda
-        run: |
-          echo "lambda_url=$(terraform output -raw lambda_url)" >> $GITHUB_ENV
+        run: echo "lambda_url=$(terraform output -raw lambda_url)" >> $GITHUB_ENV
 
   e2e-tests:
     runs-on: ubuntu-latest
