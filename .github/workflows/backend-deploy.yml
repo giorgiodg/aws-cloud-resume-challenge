@@ -2,9 +2,12 @@ name: Deploy and Test Lambda
 
 on:
   workflow_dispatch:
+  on:
   push:
     branches:
       - main
+    paths:
+      - "backend/**"
 
 jobs:
   deploy:
@@ -29,7 +32,7 @@ jobs:
 
       - name: Terraform Apply
         id: apply
-        run: terraform apply -auto-approve
+        run: terraform apply -target=module.lambda -auto-approve
         working-directory: terraform
 
       - name: Export Lambda URL
