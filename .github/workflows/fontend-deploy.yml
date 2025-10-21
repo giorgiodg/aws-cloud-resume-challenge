@@ -1,14 +1,21 @@
 name: Deploy to S3
 
+# on:
+#   push:
+#     branches:
+#       - main
+
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows: ["Cypress E2E Tests"]
+    types:
+      - completed
 
 jobs:
   deploy:
-    needs: cypress-tests # makes sure E2E tests pass first
+    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main' }}
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
