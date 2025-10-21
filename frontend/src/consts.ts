@@ -7,9 +7,9 @@ export const SITE: Site = {
 };
 
 export const HOME: Metadata = {
-  TITLE: "Giorgio Delle Grottaglie",
+  TITLE: "The Cloud Resume Challenge",
   DESCRIPTION:
-    "I am Giorgio Delle Grottaglie, and I do Technology stuff. Born and raised in the Heel of Italy, based in Rome.",
+    "This is the website I have built within the scope of the AWS Cloud Resume Challenge. Check it out",
 };
 
 export const CREDITS: Metadata = {

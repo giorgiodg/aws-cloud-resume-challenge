@@ -17,15 +17,20 @@ pnpm-debug.log*
 .env
 .env.production
 
-# macOS-specific files
+# OS-specific files
 .DS_Store
+Thumbs.db
 
 # jetbrains setting folder
 .idea/
-
 
 # terraform
 .terraform.lock.hcl
 terraform.tfstate
 terraform.tfstate.backup
 .terraform/
+
+# cypress
+cypress/screenshots/
+cypress/videos/
+cypress/downloads/
