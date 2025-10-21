@@ -2,6 +2,11 @@ variable "project_name" {
   type = string
 }
 
+variable "lambda_source_file" {
+  description = "Name for the view counter lambda function"
+  type        = string
+}
+
 variable "lambda_function_name" {
   description = "Name of the Lambda function"
   type        = string
@@ -63,7 +68,7 @@ resource "aws_lambda_function" "view_counter" {
 
 data "archive_file" "lambda_zip" {
   type        = "zip"
-  source_file = "${path.module}/${var.lambda_function_name}.mjs"
+  source_file = var.lambda_source_file
   output_path = "${path.module}/${var.lambda_function_name}.mjs.zip"
 }
 
@@ -80,6 +85,6 @@ resource "aws_lambda_function_url" "view_counter_url" {
   depends_on = [aws_lambda_function.view_counter]
 }
 
-output "function_url" {
+output "lambda_url" {
   value = aws_lambda_function_url.view_counter_url.function_url
 }

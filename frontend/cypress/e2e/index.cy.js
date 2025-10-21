@@ -34,8 +34,6 @@ it("there's a blogpost section and contains a list with at least one item", () =
 });
 
 it("there's a section with name and personal links", () => {
-  //   const page = cy.visit("/");
-
   // Selects the third <section> element on the page
   cy.get("section")
     .eq(2)

@@ -1,7 +1,3 @@
-# provider "aws" {
-#   region = var.aws_region
-# }
-
 module "frontend_website" {
   source              = "./modules/s3"
   project_name        = var.project_name
@@ -36,6 +32,7 @@ module "db" {
 
 module "lambda" {
   source               = "./modules/lambda"
+  lambda_source_file   = var.lambda_source_file
   project_name         = var.project_name
   lambda_function_name = var.lambda_function_name
   tags                 = var.project_tags
@@ -53,9 +50,9 @@ output "cloudfront_distribution_id" {
   value       = module.frontend_cdn.cloudfront_distribution_id
 }
 
-output "function_url" {
+output "lambda_url" {
   description = "URL of the Lambda function"
-  value       = module.lambda.function_url
+  value       = module.lambda.lambda_url
 }
 
 output "acm_certificate_arn" {

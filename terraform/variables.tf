@@ -24,8 +24,14 @@ variable "website_output_path" {
   default     = "../frontend/dist"
 }
 
+variable "lambda_source_file" {
+  description = "Name for the view counter lambda function"
+  type        = string
+  default     = "../backend/src/view_counter.mjs"
+}
+
 variable "lambda_function_name" {
-  description = "Name for the view counter lambda function View"
+  description = "Name for the view counter lambda function"
   type        = string
   default     = "view_counter"
 }
