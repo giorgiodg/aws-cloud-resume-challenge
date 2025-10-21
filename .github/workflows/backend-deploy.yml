@@ -2,7 +2,6 @@ name: Deploy and Test Lambda
 
 on:
   workflow_dispatch:
-  on:
   push:
     branches:
       - main
