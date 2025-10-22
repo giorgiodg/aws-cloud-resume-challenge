@@ -32,8 +32,14 @@ export const BLOG_ENTRIES: BlogEntry[] = [
   {
     href: "https://giorgiodg.it/blog/cloud-resume-challenge-website-dynamic",
     title:
-      "My journey into the Cloud Resume Challenge: making the website dynamic ",
+      "My journey into the Cloud Resume Challenge: making the website dynamic",
     description: "Part 2",
+  },
+  {
+    href: "https://giorgiodg.it/blog/cloud-resume-challenge-automating-frontend",
+    title:
+      " My journey into the Cloud Resume Challenge: automating Frontend Deployment with CI/CD",
+    description: "Part 3",
   },
 ];
 
@@ -59,3 +65,6 @@ export const PERSONAL_LINKS: PersonalLink[] = [
     icon: Book,
   },
 ];
+
+export const LAMBDA_URL: string =
+  "https://xaegc44e7d42ane3eijb7wtqh40sormf.lambda-url.eu-west-3.on.aws/";
