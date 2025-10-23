@@ -1,28 +1,10 @@
 ---
-export interface Props {
-  lambdaUrl: string;
-}
+import { LAMBDA_URL } from "@consts";
 
-const { lambdaUrl } = Astro.props;
+const response = await fetch(LAMBDA_URL);
+const data = await response.json();
 ---
 
-<div id="views" class="font-medium text-black dark:text-white">Views: N/A</div>
-<script define:vars={{ lambdaUrl }}>
-  const views = document.querySelector("#views");
-
-  async function updateCounter() {
-    if (!views) {
-      console.error("Element not found");
-      return;
-    }
-    try {
-      const response = await fetch(lambdaUrl);
-      let data = await response.json();
-      views.innerHTML = `Views: ${data.view}`;
-    } catch (error) {
-      console.error("Error updating view counter", error);
-    }
-  }
-
-  updateCounter();
-</script>
+<div id="views" class="font-medium text-black dark:text-white">
+  Views: {data.view || "n/a"}
+</div>
