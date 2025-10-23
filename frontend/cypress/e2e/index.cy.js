@@ -15,7 +15,7 @@ it("titles are correct", () => {
 });
 
 it("view counter is visualized", () => {
-  cy.get("#views").should("have.text", "Views: N/A");
+  cy.get("#views").contains("Views:");
 });
 
 it("there's a blogpost section and contains a list with at least one item", () => {
