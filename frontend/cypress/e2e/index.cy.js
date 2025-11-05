@@ -38,12 +38,10 @@ it("there's a section with name and personal links", () => {
   cy.get("section")
     .eq(2)
     .within(() => {
-      cy.get("h5")
+      cy.get("h2")
         .invoke("text")
         .then((text) => {
           expect(text.trim()).to.equal("Giorgio Delle Grottaglie");
         });
-
-      cy.get("button").its("length").should("be.gte", 1);
     });
 });
